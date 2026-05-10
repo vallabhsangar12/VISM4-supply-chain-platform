@@ -1,0 +1,11 @@
+supplier_id,supplier_name,unit_cost,lead_time_days,reliability_score,capacity_units,risk_index
+SUP-001,Supplier_1,24.98,14,0.75,4272,0.58
+SUP-002,Supplier_2,27.83,8,0.72,3944,0.58
+SUP-003,Supplier_3,38.32,7,0.72,2891,0.77
+SUP-004,Supplier_4,18.49,13,0.75,3885,0.52
+SUP-005,Supplier_5,27.28,2,0.85,3058,0.21
+SUP-006,Supplier_6,21.69,4,0.81,1767,0.57
+SUP-007,Supplier_7,11.86,4,0.9,3388,0.15
+SUP-008,Supplier_8,47.96,13,0.86,2541,0.34
+SUP-009,Supplier_9,13.91,5,0.77,1978,0.59
+SUP-010,Supplier_10,43.33,4,0.96,2455,0.25

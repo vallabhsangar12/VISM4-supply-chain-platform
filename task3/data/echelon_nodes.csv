@@ -1,0 +1,6 @@
+node_id,type,holding_cost_per_unit,handling_cost
+Factory_1,Factory,0.5,1.0
+DC_1,Distribution Center,1.2,2.5
+DC_2,Distribution Center,1.5,2.0
+Warehouse_1,Warehouse,3.0,4.0
+Warehouse_2,Warehouse,3.5,3.5

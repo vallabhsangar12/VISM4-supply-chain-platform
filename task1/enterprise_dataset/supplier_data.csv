@@ -1,0 +1,11 @@
+supplier_id,supplier_name,reliability_score,avg_lead_time_days
+SUP-001,Global Logistics Co. 1,0.81,7
+SUP-002,Global Logistics Co. 2,0.99,6
+SUP-003,Global Logistics Co. 3,0.92,3
+SUP-004,Global Logistics Co. 4,0.88,9
+SUP-005,Global Logistics Co. 5,0.75,13
+SUP-006,Global Logistics Co. 6,0.75,7
+SUP-007,Global Logistics Co. 7,0.72,3
+SUP-008,Global Logistics Co. 8,0.96,13
+SUP-009,Global Logistics Co. 9,0.88,6
+SUP-010,Global Logistics Co. 10,0.91,2
