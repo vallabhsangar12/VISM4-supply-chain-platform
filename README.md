@@ -279,4 +279,4 @@ npm run dev                   # Starts Next.js on http://localhost:3000
 
 ---
 
-> **Built with ❤️ as part of the Vinayak IT Solutions Internship Program — Month 4**
+> **Built by Vallabh Sangar ❤️ as part of the Vinayak IT Solutions Internship Program — Month 4**
