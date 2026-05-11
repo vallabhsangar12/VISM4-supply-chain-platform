@@ -13,8 +13,10 @@ export default function AlertsPage() {
   const fetchData = async () => {
     try {
       const [res1, res2] = await Promise.all([fetch(`${API_URL}/alerts`), fetch(`${API_URL}/alerts/summary`)]);
-      setAlerts(await res1.json());
-      setSummary(await res2.json());
+      const alertsData = await res1.json();
+      const summaryData = await res2.json();
+      setAlerts(Array.isArray(alertsData) ? alertsData : []);
+      setSummary(summaryData && !summaryData.error ? summaryData : null);
     } catch (err) { console.error(err); } finally { setLoading(false); }
   };
 

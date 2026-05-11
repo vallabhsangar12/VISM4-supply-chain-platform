@@ -9,8 +9,12 @@ export default function OptimizationPage() {
   const [loading, setLoading] = useState(true);
   const [actionId, setActionId] = useState(null);
 
-  const fetchData = () => fetch(`${API_URL}/recommendations`).then(res => res.json()).then(d => { setRecs(d); setLoading(false); });
-  useEffect(() => { fetchData(); }, []);
+  const fetchData = () => fetch(`${API_URL}/recommendations`).then(res => res.json()).then(d => { setRecs(Array.isArray(d) ? d : []); setLoading(false); }).catch(e => { console.error(e); setLoading(false); });
+  useEffect(() => { 
+    fetchData(); 
+    const interval = setInterval(fetchData, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleAction = async (type, id, qty) => {
     setActionId(id || 'route');
@@ -26,7 +30,7 @@ export default function OptimizationPage() {
   return (
     <div className="space-y-8 pb-10">
       <h1 className="text-3xl font-extrabold text-emerald-700">Optimization Engine</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="bg-white p-6 rounded-2xl border border-gray-200">
           <h3 className="text-lg font-bold mb-4 flex items-center text-blue-700"><Package className="mr-2" /> Pending Reorders</h3>
           {recs.filter(r => r.type === 'REORDER').map((r, i) => (
@@ -42,6 +46,15 @@ export default function OptimizationPage() {
             <div key={i} className="p-4 bg-emerald-50 rounded-xl border border-emerald-200">
               <p className="font-bold text-emerald-900 mb-2">{r.message}</p>
               <button onClick={() => handleAction('ROUTE')} disabled={actionId === 'route'} className="w-full bg-emerald-600 text-white py-2 rounded-lg font-bold">{actionId === 'route' ? '...' : 'Consolidate Routes'}</button>
+            </div>
+          ))}
+        </div>
+        <div className="bg-white p-6 rounded-2xl border border-gray-200">
+          <h3 className="text-lg font-bold mb-4 flex items-center text-purple-700"><Zap className="mr-2" /> Supplier Optimization</h3>
+          {recs.filter(r => r.type === 'SUPPLIER').map((r, i) => (
+            <div key={i} className="p-4 bg-purple-50 rounded-xl border border-purple-200">
+              <p className="font-bold text-purple-900 mb-2">{r.message}</p>
+              <div className="w-full bg-purple-600 text-white py-2 rounded-lg font-bold text-center opacity-80 cursor-not-allowed">Auto-Selected</div>
             </div>
           ))}
         </div>

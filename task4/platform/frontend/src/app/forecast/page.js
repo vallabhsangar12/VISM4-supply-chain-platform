@@ -9,13 +9,26 @@ export default function ForecastPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch(`${API_URL}/forecast`).then(res => res.json()).then(d => { setData(d); setLoading(false); });
+  };
+  useEffect(() => {
+    fetchData();
+    const interval = setInterval(fetchData, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) return <div className="flex items-center justify-center h-full"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
 
-  const chartData = [...data.historical, ...data.forecast.map(f => ({ ...f, orders: f.predicted_orders }))];
+  if (!data || data.error || !data.historical || !data.forecast) return (
+    <div className="flex flex-col items-center justify-center h-full space-y-4">
+      <TrendingUp size={48} className="text-blue-500" />
+      <h2 className="text-2xl font-bold text-gray-900">Insufficient Forecast Data</h2>
+      <p className="text-gray-500">Need at least 30 days of historical data to generate predictions.</p>
+    </div>
+  );
+
+  const chartData = [...(data.historical || []), ...(data.forecast || []).map(f => ({ ...f, orders: f.predicted_orders }))];
 
   return (
     <div className="space-y-8 pb-10">

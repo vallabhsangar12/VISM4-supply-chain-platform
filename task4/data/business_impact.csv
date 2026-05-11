@@ -1,0 +1,7 @@
+metric,before_optimization,after_optimization,improvement,improvement_pct
+Annual Inventory Cost,1500000.0,1200000.0,300000.0,20.0
+Annual Transport Cost,800000.0,650000.0,150000.0,18.8
+Annual Warehouse Cost,450000.0,400000.0,50000.0,11.1
+Stockout Penalty Cost,120000.0,40000.0,80000.0,66.7
+Avg Delivery Days,5.5,4.2,1.2999999999999998,23.6
+Fulfillment Rate,88.5,97.2,8.700000000000003,8.7

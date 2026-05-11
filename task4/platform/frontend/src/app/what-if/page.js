@@ -12,7 +12,8 @@ export default function WhatIfPage() {
   const simulate = async () => {
     setLoading(true);
     const res = await fetch(`${API_URL}/whatif`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ demand_change_pct: demand }) });
-    setResults(await res.json());
+    const data = await res.json();
+    setResults(Array.isArray(data) ? data : []);
     setLoading(false);
   };
 

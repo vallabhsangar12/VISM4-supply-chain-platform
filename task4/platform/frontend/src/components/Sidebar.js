@@ -1,12 +1,14 @@
 "use client";
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  LayoutDashboard, 
-  AlertOctagon, 
-  TrendingUp, 
-  Zap, 
+import {
+  LayoutDashboard,
+  AlertOctagon,
+  TrendingUp,
+  Zap,
   BarChart3,
+  FileText,
   Box,
   Truck
 } from 'lucide-react';
@@ -17,6 +19,7 @@ const menuItems = [
   { name: 'Demand Forecast', icon: TrendingUp, path: '/forecast' },
   { name: 'Optimization', icon: Zap, path: '/optimization' },
   { name: 'What-If Analysis', icon: BarChart3, path: '/what-if' },
+  { name: 'Business Impact', icon: FileText, path: '/impact' },
 ];
 
 export default function Sidebar() {
@@ -31,18 +34,18 @@ export default function Sidebar() {
           <p className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Enterprise v1.0</p>
         </div>
       </div>
-      
-      <nav className="flex-1 p-6 space-y-2 mt-4">
+
+      <nav className="flex-1 p-6 space-y-2 mt-2">
         {menuItems.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.path;
           return (
-            <Link 
-              key={item.path} 
+            <Link
+              key={item.path}
               href={item.path}
-              className={`flex items-center space-x-4 px-4 py-3.5 rounded-xl transition-all duration-300 group ${
-                isActive 
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50 scale-105' 
+              className={`flex items-center space-x-4 px-4 py-3 rounded-xl transition-all duration-300 group ${
+                isActive
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50'
                   : 'text-gray-400 hover:bg-gray-900 hover:text-white'
               }`}
             >
@@ -53,7 +56,7 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className="p-8 bg-gray-900/50 m-4 rounded-2xl border border-gray-800">
+      <div className="p-6 bg-gray-900/50 m-4 rounded-2xl border border-gray-800">
         <div className="flex items-center space-x-2 mb-3">
           <Truck size={16} className="text-blue-400" />
           <h4 className="text-xs font-black text-gray-300 uppercase">System Health</h4>
